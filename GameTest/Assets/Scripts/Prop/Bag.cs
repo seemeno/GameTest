@@ -8,7 +8,7 @@ namespace Com.MyCompany.MyGame
     public class Bag : MonoBehaviourPun
     {
         private Dictionary<int, int> BagContent;//<GUID,COUNT>，保存道具的唯一标识和数量
-        public int MaxOwnPropCount { get; set; } = 2; //背包最大容量
+        public int MaxOwnPropCount { get; set; } = 5; //背包最大容量
         Player player;
                                                       // Start is called before the first frame update
         void Start()
@@ -34,6 +34,7 @@ namespace Com.MyCompany.MyGame
         //wanghao
         public void AddProp(int EntityGUID, MessageUI message, int count = 1)
         {
+            Debug.Log("背包里有" + GetPropNumInBag() + "个道具");
             if (IsGhost())
             {
                 message.AddMessage("鬼不能加道具");

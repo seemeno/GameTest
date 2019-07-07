@@ -8,19 +8,24 @@ namespace Com.MyCompany.MyGame
     public class MiniMap : MonoBehaviourPunCallbacks
     {
         public static MiniMap Instance;
-        public List<ObjIconInMap> ObjIconList;
+        public Dictionary<string,ObjIconInMap> ObjIconList;
         public GameObject objIconPrefab;
         public GameObject myIconPrefab;
+        public float MaxHeight = 100;
         //wanghao
         bool isAdd = false;
         // Start is called before the first frame update
         private void Awake()
         {
+
             Instance = this;
             if (Instance == null)
                 Debug.Log("no Instance");
 
-            ObjIconList = new List<ObjIconInMap>();
+            ObjIconList = new Dictionary<string, ObjIconInMap>();
+
+            RectTransform rt = gameObject.GetComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(MaxHeight * Scene.Instance.MapWidth / Scene.Instance.MapWidth, MaxHeight);
 
         }
         void Start()
@@ -30,16 +35,18 @@ namespace Com.MyCompany.MyGame
             Debug.Log("发现人》》》》》》》》》》》》》》" + GameObject.FindGameObjectsWithTag("Player").Length.ToString());
             Debug.Log("发现门》》》》》》》》》》》》》》" + GameObject.FindGameObjectsWithTag("Door").Length.ToString());
 
+            int num = 1;
             foreach (var d in GameObject.FindGameObjectsWithTag("Door"))
             {
-                AddObjIcon(objIconPrefab, d);
+                AddObjIcon(objIconPrefab, d,"door"+num);
+                num++;
                 isAdd = true;
             }
-            AddObjIcon(myIconPrefab, transform.parent.parent.gameObject);
+            AddObjIcon(myIconPrefab, transform.parent.parent.gameObject,"player");
         }
 
         //wanghao
-        public Transform AddObjIcon(GameObject prefab, GameObject obj)
+        public Transform AddObjIcon(GameObject prefab, GameObject obj, string label)
         {
             if (obj == null)
             {
@@ -55,7 +62,7 @@ namespace Com.MyCompany.MyGame
             ObjIconInMap script = tmp.GetComponent<ObjIconInMap>();
             script.ObjIcon = obj;
 
-            ObjIconList.Add(script);
+            ObjIconList.Add(label,script);
             return tmp.transform;
         }
 
@@ -67,9 +74,11 @@ namespace Com.MyCompany.MyGame
             //wanghao
             if (!isAdd)
             {
+                int num = 1;
                 foreach (var d in GameObject.FindGameObjectsWithTag("Door"))
                 {
-                    AddObjIcon(objIconPrefab, d);
+                    AddObjIcon(objIconPrefab, d, "door" + num);
+                    num++;
                     isAdd = true;
                 }
             }

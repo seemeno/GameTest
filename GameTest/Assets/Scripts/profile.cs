@@ -26,6 +26,9 @@ namespace Com.MyCompany.MyGame
         SPEEDUP = 1,//加速道具
         CHANGEPLAYERTYPE = 2,//角色转换
         RECOVER = 3,//回血
+        RANDOMPOS = 4,//随机传送位置
+        SHOWSOUL = 5,//鬼魂接近提示
+
 
     }
 }
