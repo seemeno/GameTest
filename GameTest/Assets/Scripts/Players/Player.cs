@@ -468,7 +468,7 @@ namespace Com.MyCompany.MyGame
 
         }
 
-        public void Change_Speed(int delta_Speed)
+        public void Change_Speed(float delta_Speed)
         {
             curr_Speed += delta_Speed;
         }

@@ -8,7 +8,7 @@ namespace Com.MyCompany.MyGame
     public class SpeedUpProp : PropBase
     {
         private float Duration = 20;//持续时间
-        private float IncSpeed = 10;//在原始速度上增加的速度
+        private float IncSpeed = 0.5f;//在原始速度上倍数
                                     // Start is called before the first frame update
         void Start()
         {
@@ -41,7 +41,7 @@ namespace Com.MyCompany.MyGame
         {
             if (entity != null)
             {
-                entity.Change_Speed(-(int)IncSpeed);
+                entity.Change_Speed(-entity.Initial_Person_Speed * IncSpeed);
                 Debug.Log(entity.curr_Speed);
             }
         }
@@ -60,7 +60,7 @@ namespace Com.MyCompany.MyGame
         {
             if (entity != null)
             {
-                entity.Change_Speed((int)IncSpeed);
+                entity.Change_Speed(entity.Initial_Person_Speed * IncSpeed);
                 Debug.Log(entity.curr_Speed);
             }
         }
