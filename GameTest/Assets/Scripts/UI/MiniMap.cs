@@ -25,7 +25,7 @@ namespace Com.MyCompany.MyGame
             ObjIconList = new Dictionary<string, ObjIconInMap>();
 
             RectTransform rt = gameObject.GetComponent<RectTransform>();
-            rt.sizeDelta = new Vector2(MaxHeight * Scene.Instance.MapWidth / Scene.Instance.MapWidth, MaxHeight);
+            rt.sizeDelta = new Vector2(MaxHeight * Scene.Instance.MapLength / Scene.Instance.MapWidth, MaxHeight);
 
         }
         void Start()
