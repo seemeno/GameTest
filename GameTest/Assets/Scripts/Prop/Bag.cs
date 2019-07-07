@@ -55,7 +55,7 @@ namespace Com.MyCompany.MyGame
                 }
                 else
                 {
-                    BagContent.Add(EntityGUID, 1);
+                    BagContent.Add(EntityGUID, count);
                     message.AddMessage("获得" + PropMgr.instance.NormalProp[EntityGUID].EntityName + "道具");
                     //return true;
                 }

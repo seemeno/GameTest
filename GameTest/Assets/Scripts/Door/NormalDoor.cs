@@ -32,7 +32,7 @@ namespace Com.MyCompany.MyGame
             Bag bag = player.gameObject.GetComponent<Bag>();
             int entityType = PropMgr.instance.GetRandomNormalPropEntityID(bag.GetBagPropGUID());
             //wanghao
-            bag.AddProp(entityType, player.gameObject.GetComponent<Player>().message);
+            bag.AddProp(entityType, player.gameObject.GetComponent<Player>().message,PropMgr.instance.NormalProp[entityType].Count);
             //使用角色变换道具
             if (photonView.IsMine)
                 PropMgr.instance.SpecialProp[(int)PROPGUID.CHANGEPLAYERTYPE].Use(player.transform);
