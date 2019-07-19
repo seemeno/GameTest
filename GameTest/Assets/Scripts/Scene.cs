@@ -184,6 +184,7 @@ namespace Com.MyCompany.MyGame
                 doorType = (int)DOORTYPE.NORMALDOOR;//Random.Range((int)DOORTYPE.NORMALDOOR, (int)DOORTYPE.FINALDOOR);
                 NormalDoorGUID[i] = i;
                 DoorMgr.Instance.Add(InitOneDoor(doorPrefab, doorPos, doorType, i, "小鬼门", "小鬼门"));
+                Debug.Log("<<<<<<<<<<<<小鬼门" + i);
             }
 
             //大鬼门
@@ -245,12 +246,12 @@ namespace Com.MyCompany.MyGame
             if (isShow)
             {
                 gObj.transform.localScale = doorSize;
-                gObj.GetComponent<MeshCollider>().isTrigger = true;
+                gObj.GetComponent<BoxCollider>().isTrigger = true;
             }
             else
             {
                 gObj.transform.localScale = new Vector3(0, 0, 0);
-                gObj.GetComponent<MeshCollider>().isTrigger = false;
+                gObj.GetComponent<BoxCollider>().isTrigger = false;
             }
         }
 
