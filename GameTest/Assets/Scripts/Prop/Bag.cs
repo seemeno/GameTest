@@ -10,7 +10,8 @@ namespace Com.MyCompany.MyGame
         private Dictionary<int, int> BagContent;//<GUID,COUNT>，保存道具的唯一标识和数量
         public int MaxOwnPropCount { get; set; } = 5; //背包最大容量
         Player player;
-                                                      // Start is called before the first frame update
+        public KnapsackManager KNMgr;//背包UI
+                                     // Start is called before the first frame update
         void Start()
         {
             BagContent = new Dictionary<int, int>();
@@ -57,6 +58,7 @@ namespace Com.MyCompany.MyGame
                 {
                     BagContent.Add(EntityGUID, count);
                     message.AddMessage("获得" + PropMgr.instance.NormalProp[EntityGUID].EntityName + "道具");
+                    KNMgr.StoreItem(EntityGUID, BagContent[EntityGUID]);
                     //return true;
                 }
 
