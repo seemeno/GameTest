@@ -17,6 +17,9 @@ namespace Com.MyCompany.MyGame
         [Tooltip("The UI Label to inform the user that the connection is in progress")]
         [SerializeField]
         private GameObject progressLabel;
+        [Tooltip("The UI Label to inform the user that the connection is in progress")]
+        [SerializeField]
+        private GameObject MatchWin;
 
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
         [SerializeField]
@@ -60,7 +63,8 @@ namespace Com.MyCompany.MyGame
         void Start()
         {
             //Connect();
-            progressLabel.SetActive(false);
+            //progressLabel.SetActive(false);
+            MatchWin.SetActive(false);
             controlPanel.SetActive(true);
         }
 
@@ -79,7 +83,8 @@ namespace Com.MyCompany.MyGame
         public void Connect()
         {
             isConnecting = true;
-            progressLabel.SetActive(true);
+            //progressLabel.SetActive(true);
+            MatchWin.SetActive(true);
             controlPanel.SetActive(false);
             
             // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
@@ -113,7 +118,8 @@ namespace Com.MyCompany.MyGame
 
         public override void OnDisconnected(DisconnectCause cause)
         {
-            progressLabel.SetActive(false);
+            //progressLabel.SetActive(false);
+            MatchWin.SetActive(false);
             controlPanel.SetActive(true);
             Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
             Debug.Log("******连接失败！******");
