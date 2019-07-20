@@ -29,7 +29,7 @@ namespace Com.MyCompany.MyGame
         }
 
 
-        public RandomPosProp(int type, int GUID, string name, string Desc) : base(type,  GUID, name, Desc)
+        public RandomPosProp(int type, int GUID, string name, string Desc, string path) : base(type,  GUID, name, Desc,path)
         {
         }
     }

@@ -30,8 +30,8 @@ public class ItemImage : MonoBehaviour
     public void UpdateItemImage(Sprite icon)
 
     {
-
-        itemImage.sprite = icon;
+        if (icon != null)
+            itemImage.sprite = icon;
 
     }
 

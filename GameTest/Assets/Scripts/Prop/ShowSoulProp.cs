@@ -65,7 +65,7 @@ namespace Com.MyCompany.MyGame
             return Mathf.Sqrt(Mathf.Pow(pos1.x - pos2.x, 2.0f)+ Mathf.Pow(pos1.z - pos2.z, 2.0f));
         }
 
-        public ShowSoulProp(int type, int GUID, string name, string Desc, int count, int limit) : base(type, GUID, name, Desc,count,limit)
+        public ShowSoulProp(int type, int GUID, string name, string Desc, string path, int count, int limit) : base(type, GUID, name, Desc,path,count,limit)
         {
         }
     }

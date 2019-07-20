@@ -8,7 +8,7 @@ namespace Com.MyCompany.MyGame
     public class Bag : MonoBehaviourPun
     {
         private Dictionary<int, int> BagContent;//<GUID,COUNT>，保存道具的唯一标识和数量
-        public int MaxOwnPropCount { get; set; } = 5; //背包最大容量
+        public int MaxOwnPropCount { get; set; } = 3; //背包最大容量
         Player player;
         public KnapsackManager KNMgr;//背包UI
                                      // Start is called before the first frame update

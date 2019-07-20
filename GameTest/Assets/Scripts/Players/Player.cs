@@ -64,6 +64,7 @@ namespace Com.MyCompany.MyGame
 
         public MiniMap MinimapUI;
 
+        public KnapsackManager KNMgr;//背包UI
 
         public int iCharcaterCount;//
         bool isDead;
@@ -91,6 +92,10 @@ namespace Com.MyCompany.MyGame
             {
                 gameObject.layer = 10;
                 iCharcaterCount = 0;
+            }
+            if (photonView.IsMine)
+            {
+                Debug.Log(iCharcaterCount);
             }
 
             //GameObject prefab = (GameObject)Resources.Load("Prefabs/ObjectIcon");
@@ -321,12 +326,14 @@ namespace Com.MyCompany.MyGame
             if (iCharcaterCount == (int)Charactors_type.Person)
             {
                 MinimapUI.gameObject.SetActive(true);
+                KNMgr.gameObject.SetActive(true);
                 curr_Speed = Initial_Person_Speed;
                 anim.SetInteger("iCharcaterCount", 0);
             }
             else if (iCharcaterCount == (int)Charactors_type.Ghost)
             {
                 MinimapUI.gameObject.SetActive(false);
+                KNMgr.gameObject.SetActive(false);
                 curr_Speed = Initial_Person_Speed * 2;
                 anim.SetInteger("iCharcaterCount", 1);
             }

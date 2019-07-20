@@ -19,11 +19,11 @@ namespace Com.MyCompany.MyGame
         private GameObject progressLabel;
         [Tooltip("The UI Label to inform the user that the connection is in progress")]
         [SerializeField]
-        private GameObject MatchWin;
+        private GameObject MatchWinUI;
 
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
         [SerializeField]
-        private byte maxPlayersPerRoom = 4;
+        private byte maxPlayersPerRoom = 2;
 
         bool isConnecting;
         private readonly byte EnterRoomCode = 100;
@@ -64,7 +64,7 @@ namespace Com.MyCompany.MyGame
         {
             //Connect();
             //progressLabel.SetActive(false);
-            MatchWin.SetActive(false);
+            MatchWinUI.SetActive(false);
             controlPanel.SetActive(true);
         }
 
@@ -84,7 +84,8 @@ namespace Com.MyCompany.MyGame
         {
             isConnecting = true;
             //progressLabel.SetActive(true);
-            MatchWin.SetActive(true);
+            MatchWinUI.SetActive(true);
+            MatchWinUI.GetComponent<MatchWin>().StartCount();
             controlPanel.SetActive(false);
             
             // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
@@ -119,8 +120,9 @@ namespace Com.MyCompany.MyGame
         public override void OnDisconnected(DisconnectCause cause)
         {
             //progressLabel.SetActive(false);
-            MatchWin.SetActive(false);
+            MatchWinUI.SetActive(false);
             controlPanel.SetActive(true);
+            MatchWinUI.GetComponent<MatchWin>().StopCount();
             Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
             Debug.Log("******连接失败！******");
         }
@@ -144,7 +146,7 @@ namespace Com.MyCompany.MyGame
             //    SendOptions sendOptions = new SendOptions { Reliability = true };
             //    PhotonNetwork.RaiseEvent(EnterRoomCode, null, raiseEventOptions, sendOptions);
             //}
-            
+
             Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
             Debug.Log("******加入房间！******");
         }
@@ -153,6 +155,7 @@ namespace Com.MyCompany.MyGame
         {
             if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
             {
+                MatchWinUI.GetComponent<MatchWin>().StopCount();
                 PhotonNetwork.LoadLevel("SampleScene");
             }
         }

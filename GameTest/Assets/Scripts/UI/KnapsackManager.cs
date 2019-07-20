@@ -28,11 +28,6 @@ namespace Com.MyCompany.MyGame
 
         void Awake()
         {
-
-            //instance = this;
-
-            //this.LoadData();
-
         }
 
         public void StoreItem(int GUID, int COUNT)
@@ -42,11 +37,14 @@ namespace Com.MyCompany.MyGame
             Debug.Log("添加道具栏");
             GameObject itemPrefab = Resources.Load<GameObject>("Prefabs/ItemImage");
             Transform emptyGrid = gridPanel.GetEmptyGrid();
+            Debug.Log(PropMgr.instance.NormalProp[GUID].EntityName + COUNT);
             itemPrefab.GetComponent<ItemImage>().UpdateItem(PropMgr.instance.NormalProp[GUID].EntityName,COUNT);
+            Debug.Log(PropMgr.instance.NormalProp[GUID].ImgPath);
+            itemPrefab.GetComponent<ItemImage>().UpdateItemImage(Resources.Load<Sprite>(PropMgr.instance.NormalProp[GUID].ImgPath));
 
             GameObject itemGo = GameObject.Instantiate(itemPrefab);
 
-            itemGo.transform.SetParent(emptyGrid);
+            itemGo.transform.parent = emptyGrid;
 
             itemGo.transform.localPosition = Vector3.zero;
 

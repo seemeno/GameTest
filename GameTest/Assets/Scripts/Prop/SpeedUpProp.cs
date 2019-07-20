@@ -64,7 +64,7 @@ namespace Com.MyCompany.MyGame
                 Debug.Log(entity.curr_Speed);
             }
         }
-        public SpeedUpProp(int type, int GUID, string name, string Desc) : base(type, GUID, name, Desc)
+        public SpeedUpProp(int type, int GUID, string name, string Desc, string path) : base(type, GUID, name, Desc,path)
         {
         }
     }

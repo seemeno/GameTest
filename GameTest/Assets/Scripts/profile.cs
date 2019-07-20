@@ -31,5 +31,12 @@ namespace Com.MyCompany.MyGame
 
 
     }
+
+    public enum GAMETROTYPE : int
+    {
+        GAMEINTRO = 1, // 游戏说明
+        SENCEINTRO = 2, //场景说明
+        TOOLINTRO = 3,//道具说明
+    }
 }
 

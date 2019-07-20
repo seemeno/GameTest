@@ -56,9 +56,10 @@ namespace Com.MyCompany.MyGame
             gameObject.SetActive(false);
         }
 
-        public void SetFullScreen()
+        public void SetScreenStatus(bool IsFull)
         {
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+            IsFullScreen = IsFull;
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, IsFull);
         }
 
 
@@ -69,7 +70,7 @@ namespace Com.MyCompany.MyGame
 
         public void SetResolution()
         {
-            Screen.SetResolution(ResolutionList[dropdown.value].y, ResolutionList[dropdown.value].x, IsFullScreen);
+            Screen.SetResolution( ResolutionList[dropdown.value].x, ResolutionList[dropdown.value].y, IsFullScreen);
         }
 
 

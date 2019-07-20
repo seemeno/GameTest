@@ -30,7 +30,7 @@ namespace Com.MyCompany.MyGame
                 finalHP = entity.Initial_HP;
             entity.curr_Health_Point = finalHP;
         }
-        public RecoverProp(int type, int GUID, string name, string Desc) : base(type, GUID, name, Desc)
+        public RecoverProp(int type, int GUID, string name, string Desc, string path) : base(type, GUID, name, Desc,path)
         {
         }
 
